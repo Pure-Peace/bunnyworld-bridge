@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { BigNumber, BigNumberish } from 'ethers';
-import { ZERO_ADDRESS } from './scripts/constants';
+import {BigNumber, BigNumberish} from 'ethers';
+import {ZERO_ADDRESS} from './scripts/constants';
 import {
   BridgeableTokensConfigStruct,
   BridgeApprovalConfigStruct,
@@ -43,23 +43,22 @@ const NATIVE_TOKEN = ZERO_ADDRESS;
 const BUNNYWORLD_CHAIN_ID = 1717;
 
 // Mainnet
-const BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD = '0x4C9407df1aD4119916882dc40d50F729969972dB'
+const BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD =
+  '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
 const MAINNET_CHAIN_ID = 1;
 const BSC_CHAIN_ID = 56;
-const BSC_APPROVER = '0x19bCDB09AF94F85124Cd55B7B5ef31A34c3993D1'
-const BUNNYWORLD_APPROVER = '0x041eAAa15e6Cb9f290CB1f95e566C7542FD79F46'
-const BUNNYWORLD_TOKEN_MAINNET = '0xcDE07F2d976b2687944Ad2c70E2Cec9A7034b75B'
-
+const BSC_APPROVER = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
+const BUNNYWORLD_APPROVER = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
+const BUNNYWORLD_TOKEN_MAINNET = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
 
 // Testnet
 const BSC_TESTNET_CHAIN_ID = 97;
 const RINKEBY_CHAIN_ID = 4;
-const BUNNYWORLD_TOKEN_RINKEBY = '0xc526f065c6a9Fc54A9495861B3807F58aA63565d';
+const BUNNYWORLD_TOKEN_RINKEBY = '0xCEaCd4Bd924c8BB90330Fab8C3B3A2Dbd3C03ac2';
 const BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET =
-  '0x686E797117ba23b30aA07AAdF82ba8A0B329948b';
+  '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
 
-
-const configTestnet: { [key: string]: DeployConfig } = {
+const config: {[key: string]: DeployConfig} = {
   rinkeby: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
@@ -192,7 +191,7 @@ const configTestnet: { [key: string]: DeployConfig } = {
   },
 };
 
-const config: { [key: string]: DeployConfig } = {
+const configMainnet: {[key: string]: DeployConfig} = {
   mainnet: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
@@ -209,7 +208,7 @@ const config: { [key: string]: DeployConfig } = {
           maxBridgeAmount: 0,
           bridgeFee: 0,
         },
-      }
+      },
     ],
     bridgeApprovalConfigs: [],
     bridgeERC20DeployConfigs: [],
@@ -231,7 +230,7 @@ const config: { [key: string]: DeployConfig } = {
           maxBridgeAmount: 0,
           bridgeFee: 0,
         },
-      }
+      },
     ],
     bridgeApprovalConfigs: [
       {
@@ -261,7 +260,7 @@ const config: { [key: string]: DeployConfig } = {
           maxBridgeAmount: 0,
           bridgeFee: 0,
         },
-      }
+      },
     ],
     bridgeApprovalConfigs: [
       {
@@ -283,6 +282,5 @@ const config: { [key: string]: DeployConfig } = {
     depositNativeTokensAmountEther: 0,
   },
 };
-
 
 export default config;
