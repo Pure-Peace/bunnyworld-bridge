@@ -61,11 +61,13 @@ export async function setup(): Promise<{
   const deployer = accounts[0];
   console.log('Network:', hre.network.name);
   console.log('Signer:', deployer.address);
-  console.log(
-    'Signer balance:',
-    hre.ethers.utils.formatEther(await deployer.getBalance()).toString(),
-    'ETH'
-  );
+  try {
+    console.log(
+      'Signer balance:',
+      hre.ethers.utils.formatEther(await deployer.getBalance()).toString(),
+      'ETH'
+    );
+  } catch (_) {}
 
   return {
     accounts,

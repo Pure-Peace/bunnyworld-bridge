@@ -100,7 +100,7 @@ const config: {[key: string]: DeployConfig} = {
     bridgeERC20DeployConfigs: [],
     depositNativeTokensAmountEther: 0,
   },
-  bunnyWorldTestnet: {
+  bunnyWorld: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET,

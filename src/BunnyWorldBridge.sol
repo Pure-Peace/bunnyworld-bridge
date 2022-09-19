@@ -133,6 +133,7 @@ contract BunnyWorldBridge is Initializable, AccessControlEnumerableUpgradeable, 
     event BridgeApprovalConfigUpdated(address indexed token, bool enabled, bool transfer);
 
     bytes32 public constant BRIDGE_APPROVER_ROLE = keccak256("BRIDGE_APPROVER_ROLE");
+    bytes32 public constant FEE_SETTER_ROLE = keccak256("FEE_SETTER_ROLE");
 
     mapping(bytes32 => BridgeableTokensConfig) private _bridgeableTokens;
     mapping(address => BridgeApprovalConfig) public bridgeApprovalConfig;
@@ -185,6 +186,7 @@ contract BunnyWorldBridge is Initializable, AccessControlEnumerableUpgradeable, 
 
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setRoleAdmin(BRIDGE_APPROVER_ROLE, DEFAULT_ADMIN_ROLE);
+        _setRoleAdmin(FEE_SETTER_ROLE, DEFAULT_ADMIN_ROLE);
 
         _setBridgeRunningStatus(_bridgeRunningStatus);
         globalFeeStatus = _globalFeeStatus;
@@ -423,7 +425,7 @@ contract BunnyWorldBridge is Initializable, AccessControlEnumerableUpgradeable, 
      */
     function setBridgeFees(TokensOnChain[] memory tokensOnChain, uint256[] memory fees)
         external
-        onlyRole(DEFAULT_ADMIN_ROLE)
+        onlyRole(FEE_SETTER_ROLE)
         checkArrayLength(tokensOnChain.length, fees.length)
     {
         for (uint256 i; i < tokensOnChain.length; i++) {
