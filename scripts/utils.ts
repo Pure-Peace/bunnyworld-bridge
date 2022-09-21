@@ -316,6 +316,7 @@ export async function tryInitializeUpgradeableContract<T extends Contract>(
     await contract.callStatic.initialize(...initializeArgs);
   } catch (err) {
     console.log('Already initialized or initialize error');
+    return;
   }
 
   console.log('Initializing...');
