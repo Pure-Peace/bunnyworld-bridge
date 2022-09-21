@@ -43,13 +43,13 @@ const NATIVE_TOKEN = ZERO_ADDRESS;
 const BUNNYWORLD_CHAIN_ID = 1717;
 
 // Mainnet
-const BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD =
-  '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
+const BUNNYWORLD_BRIDGE_FEE_RECIPIENT =
+  '0x986959c735a71fA8C993c190d8BC0d7C68fb145e';
 const MAINNET_CHAIN_ID = 1;
 const BSC_CHAIN_ID = 56;
-const BSC_APPROVER = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
-const BUNNYWORLD_APPROVER = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
-const BUNNYWORLD_TOKEN_MAINNET = '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
+const BSC_APPROVER = '0xA2a8EEa8a6554F15162A16dF5B40457E582A8Bc5';
+const BUNNYWORLD_APPROVER = '0xA2a8EEa8a6554F15162A16dF5B40457E582A8Bc5';
+const BUNNYWORLD_TOKEN_MAINNET = '0x565115c5b0c98558A11B066a3cAca3C7B120D76c';
 
 // Testnet
 const BSC_TESTNET_CHAIN_ID = 97;
@@ -58,7 +58,7 @@ const BUNNYWORLD_TOKEN_RINKEBY = '0xCEaCd4Bd924c8BB90330Fab8C3B3A2Dbd3C03ac2';
 const BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET =
   '0x1cA11D52E537bA16604925E430ca69AEb4A87cB5';
 
-const config: {[key: string]: DeployConfig} = {
+const configTestnet: {[key: string]: DeployConfig} = {
   rinkeby: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
@@ -191,11 +191,11 @@ const config: {[key: string]: DeployConfig} = {
   },
 };
 
-const configMainnet: {[key: string]: DeployConfig} = {
+const config: {[key: string]: DeployConfig} = {
   mainnet: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
-    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD,
+    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [],
     bridgeableTokens: [
       {
@@ -217,7 +217,7 @@ const configMainnet: {[key: string]: DeployConfig} = {
   bunnyWorld: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
-    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD,
+    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [BUNNYWORLD_APPROVER],
     bridgeableTokens: [
       {
@@ -242,12 +242,12 @@ const configMainnet: {[key: string]: DeployConfig} = {
       },
     ],
     bridgeERC20DeployConfigs: [],
-    depositNativeTokensAmountEther: 9999998,
+    depositNativeTokensAmountEther: 9999999999, // 10b - 1ether
   },
   bsc: {
     bridgeRunningStatus: true,
     globalFeeStatus: true,
-    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_BSC_BUNNYWORLD,
+    feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [BSC_APPROVER],
     bridgeableTokens: [
       {
@@ -276,7 +276,7 @@ const configMainnet: {[key: string]: DeployConfig} = {
         name: 'BunnyWorldToken',
         symbol: 'RBT',
         decimals: 18,
-        totalSupplyWithDecimals: 10_000_000,
+        totalSupplyWithDecimals: 10_000_000_000,
       },
     ],
     depositNativeTokensAmountEther: 0,
