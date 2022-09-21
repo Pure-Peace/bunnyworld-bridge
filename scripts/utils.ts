@@ -336,6 +336,7 @@ export async function deployAndSetupContracts() {
   ]);
 
   await grantBridgeApprovers(deployer, BunnyWorldBridge);
+  await grantBridgeFeeSetters(deployer, BunnyWorldBridge);
   await deployBridgeERC20TokensForBridge(deploy, BunnyWorldBridge);
   const bridgeERC20TokensDict = getBridgeERC20TokensLocal();
   await addBridgeableTokens(bridgeERC20TokensDict, BunnyWorldBridge);
@@ -360,6 +361,27 @@ async function grantBridgeApprovers(
     console.log(`add approver ${approver}...`);
     await waitContractCall(
       await bunnyWorldBridge.grantRole(approverRole, approver)
+    );
+  }
+}
+
+async function grantBridgeFeeSetters(
+  deployer: SignerWithAddress,
+  bunnyWorldBridge: BunnyWorldBridge
+) {
+  const {bridgeFeeSetters} = deployConfig();
+  if (bridgeFeeSetters.length === 0) return;
+
+  console.log('granting bridge fee setters...');
+  const feeSetterRole = await bunnyWorldBridge.FEE_SETTER_ROLE();
+  for (let setter of bridgeFeeSetters) {
+    if (setter === 'deployer') {
+      setter = deployer.address;
+    }
+    if (await bunnyWorldBridge.hasRole(feeSetterRole, setter)) continue;
+    console.log(`add fee setter ${setter}...`);
+    await waitContractCall(
+      await bunnyWorldBridge.grantRole(feeSetterRole, setter)
     );
   }
 }

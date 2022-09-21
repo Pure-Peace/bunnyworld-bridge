@@ -29,6 +29,7 @@ export type DeployConfig = {
   globalFeeStatus: boolean;
   feeRecipient: string;
   bridgeApprovers: string[];
+  bridgeFeeSetters: string[];
   bridgeableTokens: BridgeableToken[];
   bridgeApprovalConfigs: BridgeApprovalConfig[];
   bridgeERC20DeployConfigs: BridgeERC20DeployConfig[];
@@ -49,6 +50,7 @@ const MAINNET_CHAIN_ID = 1;
 const BSC_CHAIN_ID = 56;
 const BSC_APPROVER = '0xA2a8EEa8a6554F15162A16dF5B40457E582A8Bc5';
 const BUNNYWORLD_APPROVER = '0xA2a8EEa8a6554F15162A16dF5B40457E582A8Bc5';
+const BUNNYWORLD_FEE_SETTER = '0xA2a8EEa8a6554F15162A16dF5B40457E582A8Bc5';
 const BUNNYWORLD_TOKEN_MAINNET = '0x565115c5b0c98558A11B066a3cAca3C7B120D76c';
 
 // Testnet
@@ -64,6 +66,7 @@ const configTestnet: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET,
     bridgeApprovers: ['deployer'],
+    bridgeFeeSetters: ['deployer'],
     bridgeableTokens: [
       {
         token: BUNNYWORLD_TOKEN_RINKEBY,
@@ -105,6 +108,7 @@ const configTestnet: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET,
     bridgeApprovers: ['deployer'],
+    bridgeFeeSetters: ['deployer'],
     bridgeableTokens: [
       {
         token: NATIVE_TOKEN,
@@ -146,6 +150,7 @@ const configTestnet: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT_TESTNET,
     bridgeApprovers: ['deployer'],
+    bridgeFeeSetters: ['deployer'],
     bridgeableTokens: [
       {
         token: 'BridgeRBT',
@@ -197,6 +202,7 @@ const config: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [],
+    bridgeFeeSetters: [],
     bridgeableTokens: [
       {
         token: BUNNYWORLD_TOKEN_MAINNET,
@@ -219,6 +225,7 @@ const config: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [BUNNYWORLD_APPROVER],
+    bridgeFeeSetters: [BUNNYWORLD_FEE_SETTER],
     bridgeableTokens: [
       {
         token: NATIVE_TOKEN,
@@ -249,6 +256,7 @@ const config: {[key: string]: DeployConfig} = {
     globalFeeStatus: true,
     feeRecipient: BUNNYWORLD_BRIDGE_FEE_RECIPIENT,
     bridgeApprovers: [BSC_APPROVER],
+    bridgeFeeSetters: [BUNNYWORLD_FEE_SETTER],
     bridgeableTokens: [
       {
         token: 'BunnyWorldToken',
